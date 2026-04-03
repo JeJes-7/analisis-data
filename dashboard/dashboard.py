@@ -8,12 +8,11 @@ st.title('Bike Sharing Dashboard')
 st.markdown('Analisis penyewaan sepeda berdasarkan cuaca, musim, dan tipe pengguna.')
 
 # Load data
-@st.cache_data
-def load_data():
-    df = pd.read_csv('main_data.csv')
-    df['dteday'] = pd.to_datetime(df['dteday'])
-    return df
-df = load_data()
+import os
+# Gunakan path relatif terhadap file dashboard.py
+current_dir = os.path.dirname(__file__)
+csv_path = os.path.join(current_dir, 'main_data.csv')
+df = pd.read_csv(csv_path)
 
 # Sidebar filters
 st.sidebar.header('Filter Data')
